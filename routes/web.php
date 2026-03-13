@@ -12,6 +12,7 @@ Route::get('/', [EventController::class, 'index'])->name('index');
 Route::get('/event/{event}', [EventController::class, 'show'])->name('event.show');
 Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
 Route::get('/success-payment', [BookingController::class, 'success_payment'])->name('success.payment');
+Route::post('/webhook', [BookingController::class, 'webhook'])->name('webhook');
 Route::get('/ticket/qr/{qr_token}', [TicketController::class, 'qr'])->name('tickets.qr');
 Route::get('/tickets/{booking}/download-pdf', [TicketController::class, 'downloadPdf'])
     ->name('tickets.download.pdf');
