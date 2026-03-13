@@ -64,7 +64,7 @@ class BookingController extends Controller
 // If you are testing with the CLI, find the secret by running 'stripe listen'
 // If you are using an endpoint defined with the API or dashboard, look in your webhook settings
 // at https://dashboard.stripe.com/webhooks
-        $endpoint_secret = 'whsec_945cb4494f46afb932983119e965ec42776ea485f60019956531953a7b994545';
+        $endpoint_secret = config('services.stripe.webhook_sc');
 
         $payload = @file_get_contents('php://input');
         $event = null;
