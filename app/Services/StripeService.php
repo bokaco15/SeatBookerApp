@@ -64,7 +64,7 @@ class StripeService
         $stripe = $this->stripe;
         $checkout_session = $stripe->checkout->sessions->retrieve($sessionId, []);
         $email = $checkout_session->customer_details->email;
-        $booking = Booking::where('session_id', $sessionId)->first();
+        $booking = Booking::firstWhere('session_id', $sessionId);
         if (!$booking) {
             abort(404, 'Booking not found');
         }

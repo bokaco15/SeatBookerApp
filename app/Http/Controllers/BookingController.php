@@ -30,7 +30,7 @@ class BookingController extends Controller
 
 
 
-    public function success_payment(Request $request) : View
+    public function successPayment(Request $request) : View
     {
         $stripeService = new StripeService();
         $data = $stripeService->getSuccessPaymentData($request->session_id);
