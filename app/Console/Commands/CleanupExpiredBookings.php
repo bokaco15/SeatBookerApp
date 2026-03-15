@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Enums\Booking\BookingStatus;
 use App\Models\Booking;
 use Illuminate\Console\Command;
 
@@ -27,7 +28,7 @@ class CleanupExpiredBookings extends Command
     public function handle()
     {
         // Koristimo whereIn da uhvatimo i pending i unpaid statuse
-        $expiredBookings = Booking::whereIn('status', ['pending', 'unpaid'])
+        $expiredBookings = Booking::whereIn('status', [BookingStatus::PENDING, BookingStatus::UNPAID])
             ->where('expires_at', '<', now())
             ->with('booking_items')
             ->get();
